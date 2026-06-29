@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <title>中国語学習アプリ</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Kosugi+Maru&display=swap" rel="stylesheet">
+</head>
+<body>
+
+  <header>
+    <h1>中国語学習アプリ</h1>
+  </header>
+
+  <main>
+    <!-- ホーム画面 -->
+    <section id="homeScreen">
+      <h2 class="menu">メニュー</h2>
+      <div class="firstselect">
+      <button onclick="showInputScreen()">作品を入力する</button>
+      <button onclick="showReviewScreen()">作品を復習する</button>
+      </div>
+
+    </section>
+
+    <!-- 作品入力画面 -->
+    <section id="inputScreen" class="hidden">
+      <h2>作品を入力</h2>
+
+      <input id="title" placeholder="作品名">
+      <input id="author" placeholder="作者">
+
+      <textarea id="chineseText" placeholder="中国語本文"></textarea>
+      <textarea id="pinyin" placeholder="ピンイン"></textarea>
+      <textarea id="japanese" placeholder="日本語訳"></textarea>
+      <textarea id="memo" placeholder="メモ・授業内容"></textarea>
+
+      <button onclick="saveWork()">保存する</button>
+      <button onclick="showHomeScreen()">戻る</button>
+    </section>
+
+    <!-- 復習画面 -->
+    <section id="reviewScreen" class="hidden">
+      <h2>復習する作品</h2>
+
+      <input id="searchInput" placeholder="作品名・作者で検索" oninput="searchWorks()">
+
+      <div id="workList"></div>
+
+      <button onclick="showHomeScreen()">戻る</button>
+    </section>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>

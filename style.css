@@ -1,0 +1,76 @@
+/* 使用フォント.kosugi-maru-regular {
+  font-family: "Kosugi Maru", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+ */
+
+body {
+  font-family: "Kosugi Maru", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  background: #f5f5f5;
+  margin: 0;
+  color: #333;
+}
+
+header {
+  background: #2f4f4f;
+  color: white;
+  text-align: center;
+  padding: 20px;
+}
+
+main {
+  width: 90%;
+  max-width: 900px;
+  margin: 30px auto;
+}
+
+section {
+  background: rgba(255, 255, 255, 0.5);;
+  padding: 240px;
+  border-radius: 10px;
+  border: 1px solid gray;
+  box-shadow: 0px 4px 10px rgba(0,0,0,0.1);
+}
+
+h2.menu{
+  text-size-adjust: 30px;
+  text-align: center;
+}
+
+.firstselect{
+  text-align: center;
+}
+
+
+button {
+  padding: 10px 18px;
+  margin: 8px 4px;
+  cursor: pointer;
+}
+
+input,
+textarea {
+  width: 100%;
+  padding: 10px;
+  margin: 8px 0;
+  box-sizing: border-box;
+}
+
+textarea {
+  height: 120px;
+}
+
+.hidden {
+  display: none;
+}
+
+.card {
+  border: 1px solid #ddd;
+  padding: 16px;
+  margin-bottom: 16px;
+  border-radius: 8px;
+  background: #fafafa;
+}
