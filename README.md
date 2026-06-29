@@ -20,8 +20,6 @@ HTML / CSS / JavaScript / localStorage
 - localStorageによるデータ保存
 
 ## 今後追加したい機能
-- 検索機能
-- 修正機能
 - 単語帳機能
 - AI要約機能
 - Java / Spring Boot / MySQLによるバックエンド化
