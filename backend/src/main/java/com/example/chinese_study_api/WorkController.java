@@ -2,60 +2,59 @@ package com.example.chinese_study_api;
 
 import org.springframework.web.bind.annotation.*;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @RestController
 @CrossOrigin(origins = "*")
 public class WorkController {
 
-    private List<Work> works = new ArrayList<>();
-    private int nextId = 1;
+    private final WorkRepository repository;
 
+    public WorkController(WorkRepository repository) {
+        this.repository = repository;
+    }
+
+    // 一覧取得
     @GetMapping("/works")
     public List<Work> getWorks() {
-        return works;
+        return repository.findAll();
     }
 
+    // 登録
     @PostMapping("/works")
     public Work addWork(@RequestBody Work work) {
-        work.setId(nextId);
-        nextId++;
-
-        works.add(work);
-
-        return work;
+        return repository.save(work);
     }
 
+    // 削除
     @DeleteMapping("/works/{id}")
     public String deleteWork(@PathVariable int id) {
-        for (int i = 0; i < works.size(); i++) {
-            if (works.get(i).getId() == id) {
-                works.remove(i);
-                return "削除しました";
-            }
+
+        if (repository.existsById(id)) {
+            repository.deleteById(id);
+            return "削除しました";
         }
 
         return "指定された作品が見つかりません";
     }
 
+    // 修正
     @PutMapping("/works/{id}")
-public Work updateWork(@PathVariable int id, @RequestBody Work updatedWork) {
-    for (int i = 0; i < works.size(); i++) {
-        if (works.get(i).getId() == id) {
-            Work work = works.get(i);
+    public Work updateWork(@PathVariable int id, @RequestBody Work updatedWork) {
 
-            work.setTitle(updatedWork.getTitle());
-            work.setAuthor(updatedWork.getAuthor());
-            work.setChineseText(updatedWork.getChineseText());
-            work.setPinyin(updatedWork.getPinyin());
-            work.setJapanese(updatedWork.getJapanese());
-            work.setMemo(updatedWork.getMemo());
+        Work work = repository.findById(id).orElse(null);
 
-            return work;
+        if (work == null) {
+            return null;
         }
-    }
 
-    return null;
-}
+        work.setTitle(updatedWork.getTitle());
+        work.setAuthor(updatedWork.getAuthor());
+        work.setChineseText(updatedWork.getChineseText());
+        work.setPinyin(updatedWork.getPinyin());
+        work.setJapanese(updatedWork.getJapanese());
+        work.setMemo(updatedWork.getMemo());
+
+        return repository.save(work);
+    }
 }
